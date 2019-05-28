@@ -4,6 +4,8 @@ $(document).ready(function() {
     var APIKey = "YuLShxF8h1Z5K6nn3rENeDtBLj8x5q5E";
     var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=" + APIKey;
 
+    var topics = ["Suits", "Killing Eve", "Big Little Lies", "The Office", "Friends", "Sherlock", "Marvelous Mrs.Maisel", "Black Mirror", "The Blacklist", "The Good Place"];
+
     // AJAX call to Giphy API
     $.ajax({
       url: queryURL,
