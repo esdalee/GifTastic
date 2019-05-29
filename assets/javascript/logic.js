@@ -18,7 +18,7 @@ $(document).ready(function() {
         // Go through loop to add a button for each tv show
         for (var i = 0; i < topics.length; i++) {
             var showDiv = $("<button>");
-            showDiv.addClass("tvshow");
+            showDiv.addClass("tvShow");
             // Add attribute with value of TV show
             showDiv.attr("name", topics[i]);
             // Add TV show name
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
                 var gifImage = $("<img class='gifImage'>");
                 // Set attributes for img (still vs. animated)
-                gifImage.attr("src", results[i].images.fixed.height_still.url);
+                gifImage.attr("src", results[i].images.fixed_height_still.url);
                 // Set image to still
                 gifImage.attr("data-state", "still");
                 gifImage.attr("data-animate", results[i].images.fixed_height.url);
@@ -64,8 +64,8 @@ $(document).ready(function() {
     }
 
     // Click handler to generate new query URL
-    $(".tvShow").on("click", function() {
-        queryTerm = $(this).val().trim();
+    $(document).on("click", ".tvShow", function() {
+        queryTerm = $(this).text().trim();
         console.log(queryTerm);
         var newURL = queryURL + "&q=" + queryTerm;
         console.log(newURL);
@@ -86,9 +86,11 @@ $(document).ready(function() {
       });
 
     // Click handler to play/pause gif
-    $(".gif").on("click", function(){
+    
+    $(document).on("click", ".gifImage", function(){
         // Grab current status of the gif
         var state = $(this).attr("data-state");
+        console.log(state);
 
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
@@ -99,6 +101,4 @@ $(document).ready(function() {
             $(this).attr("data-state", "still");
         }
     });
-
-
 });
