@@ -42,24 +42,24 @@ $(document).ready(function() {
             console.log(results);
             // Loop through results and add gifs
             for (var i=0; i<results.length; i++) {
-                var gifDiv = $("<div>");
-                var rating = $("div id='rating'>" + results[i].rating + "</div>");
-                var gifImage = $("<img class='gif'>");
+                var gifDiv = $("<div class='gif'></div>");
+                var ratingDiv = $("<div class='ratingDiv'>" + results[i].rating.toUpperCase() + "</div>");
 
+                var gifImage = $("<img class='gifImage'>");
                 // Set attributes for img (still vs. animated)
+                gifImage.attr("src", results[i].images.fixed.height_still.url);
+                // Set image to still
+                gifImage.attr("data-state", "still");
+                gifImage.attr("data-animate", results[i].images.fixed_height.url);
+                gifImage.attr("data-still", results[i].images.fixed_height_still.url);
 
+                // Add to the gif div
                 gifDiv.append(gifImage);
-                gifDiv.append(rating);
+                gifDiv.append(ratingDiv);
                
+                // Prepend gif div to gifsView div
                 $(".gifsView").prepend(gifDiv);
-
             }
-
-
-            //
-
-
-
         });
     }
 
@@ -84,6 +84,21 @@ $(document).ready(function() {
         // Call render function to make button
         renderButtons();
       });
+
+    // Click handler to play/pause gif
+    $(".gif").on("click", function(){
+        // Grab current status of the gif
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        }
+        else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 
 
 });
