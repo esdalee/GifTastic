@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     // Set variables
     var APIKey = "YuLShxF8h1Z5K6nn3rENeDtBLj8x5q5E";
-    var queryURL = "https://api.giphy.com/v1/gifs/random?limit=10&api_key=" + APIKey;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?limit=10&api_key=" + APIKey;
     var queryTerm = "";
 
     // Initialize variable
@@ -35,8 +35,31 @@ $(document).ready(function() {
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(gifData) {
-            console.log(gifData);
+        }).then(function(response) {
+            console.log(response);
+            // Store the object as results
+            var results = response.data;
+            console.log(results);
+            // Loop through results and add gifs
+            for (var i=0; i<results.length; i++) {
+                var gifDiv = $("<div>");
+                var rating = $("div id='rating'>" + results[i].rating + "</div>");
+                var gifImage = $("<img class='gif'>");
+
+                // Set attributes for img (still vs. animated)
+
+                gifDiv.append(gifImage);
+                gifDiv.append(rating);
+               
+                $(".gifsView").prepend(gifDiv);
+
+            }
+
+
+            //
+
+
+
         });
     }
 
