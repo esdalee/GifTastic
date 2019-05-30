@@ -18,7 +18,7 @@ $(document).ready(function() {
         // Go through loop to add a button for each tv show
         for (var i = 0; i < topics.length; i++) {
             var showDiv = $("<button>");
-            showDiv.addClass("tvShow");
+            showDiv.addClass("tvShow btn-lg btn-space");
             // Add attribute with value of TV show
             showDiv.attr("name", topics[i]);
             // Add TV show name
@@ -43,21 +43,22 @@ $(document).ready(function() {
             // Loop through results and add gifs
             for (var i=0; i<results.length; i++) {
                 var gifDiv = $("<div class='gif'></div>");
-                var ratingDiv = $("<div class='ratingDiv'>" + results[i].rating.toUpperCase() + "</div>");
+                var ratingDiv = $("<div class='ratingDiv'>" + "Rated: " + results[i].rating.toUpperCase() + "</div>");
 
                 var gifImage = $("<img class='gifImage'>");
                 // Set attributes for img (still vs. animated)
                 gifImage.attr("src", results[i].images.fixed_height_still.url);
-                // Set image to still
-                gifImage.attr("data-state", "still");
                 gifImage.attr("data-animate", results[i].images.fixed_height.url);
                 gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+                
+                // Set image to still
+                gifImage.attr("data-state", "still");
 
-                // Add to the gif div
+                // Add image and rating to the gif div
                 gifDiv.append(gifImage);
                 gifDiv.append(ratingDiv);
                
-                // Prepend gif div to gifsView div
+                // Add gif div to gifsView div
                 $(".gifsView").prepend(gifDiv);
             }
         });
@@ -65,8 +66,10 @@ $(document).ready(function() {
 
     // Click handler to generate new query URL
     $(document).on("click", ".tvShow", function() {
+        // Grab text from tvShow button
         queryTerm = $(this).text().trim();
         console.log(queryTerm);
+        // Build new URL using query search
         var newURL = queryURL + "&q=" + queryTerm;
         console.log(newURL);
         // Send AJAX call with new uRL
@@ -79,23 +82,24 @@ $(document).ready(function() {
          e.preventDefault();
         // Get value from user's input
         var show = $("#tvShow-input").val().trim();
-        // Add to array
+        // Add to topics array
         topics.push(show);
         // Call render function to make button
         renderButtons();
       });
 
     // Click handler to play/pause gif
-    
     $(document).on("click", ".gifImage", function(){
-        // Grab current status of the gif
+        // Grab current state of the gif
         var state = $(this).attr("data-state");
         console.log(state);
 
+        // If gif is paused, play it
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
         }
+        // If gif is playing, pause it
         else {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
