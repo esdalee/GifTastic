@@ -6,7 +6,7 @@ $(document).ready(function() {
     var queryTerm = "";
 
     // Initialize variable
-    var topics = ["Suits", "Killing Eve", "Big Little Lies", "The Office", "Friends", "Sherlock", "Marvelous Mrs.Maisel", "Black Mirror", "The Blacklist", "The Good Place"];
+    var topics = ["Suits", "Killing Eve", "Big Little Lies", "The Office", "Friends", "Sherlock", "Marvelous Mrs.Maisel", "Black Mirror", "The Blacklist", "The Good Place", "Saturday Night Live"];
 
     // Load buttons from initialized array
     renderButtons();

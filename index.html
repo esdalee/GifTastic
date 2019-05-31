@@ -13,32 +13,38 @@
 <div class="container text-center">
         <div class="bgImage"></div>
         <header>
-            <h1>TV FAVORITES</h1>
+            <h1 id="title">TV FAVORITES</h1>
         </header>
 
     <!-- Where buttons display -->
+    <div class="btnDisplay row text-center">
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
+                <div id="buttons-list"></div>
+        </div>
+        <div class="col-1"></div>
+    </div>
 
-    <div class="row text-center border bg light">
-            <div class="col border bg light">
-                    <div id="buttons-list">
-            </div>
-    <div class="row text-center border bg light">
-            <div class="col text-center">
-                <!-- Form to add tv show -->
-                <form id="tvShow-form text-center">
-                    <label for="tvShow-input">What's your show?</label><br>
-                    <input type="text" id="tvShow-input">
-                    <input id="add-tvShow" type="submit" value="Voila!">
-                </form>
-            </div>
+    <!-- Where user inputs show name -->
+    <div class="submit row text-center">
+        <div class="col-2"></div>
+        <div class="col-8 text-center border bg light">
+            <!-- Form to add tv show -->
+            <form id="tvShow-form text-center">
+                <label for="tvShow-input" id="whatShow">What's your show?</label><br>
+                <input type="text" id="tvShow-input">
+                <input id="add-tvShow" type="submit" value="Voila!">
+            </form>
+        </div>
+        <div class="col-2"></div>
     </div><br>
 
     <!-- Gifs will be dumped here -->
-    <div class="panel panel-default text-center">
-        <div class="panel-heading">
-            <h3 class="panel panel-success">All the Gifs</h3>
+    <div class="text-center">
+        <div>
+            <h3 class="">Alllll the Gifs</h3>
         </div>
-        <div class= "gifsView panel-body"></div>
+        <div class= "gifsView"></div>
     </div>
 
 
