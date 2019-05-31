@@ -18,7 +18,7 @@ $(document).ready(function() {
         // Go through loop to add a button for each tv show
         for (var i = 0; i < topics.length; i++) {
             var showDiv = $("<button>");
-            showDiv.addClass("tvShow btn-lg btn-space");
+            showDiv.addClass("tvShow btn-md btn-space");
             // Add attribute with value of TV show
             showDiv.attr("name", topics[i]);
             // Add TV show name
@@ -42,7 +42,7 @@ $(document).ready(function() {
             console.log(results);
             // Loop through results and add gifs
             for (var i=0; i<results.length; i++) {
-                var gifDiv = $("<div class='gif'></div>");
+                var gifDiv = $("<div class='gif'></div><br>");
                 var ratingDiv = $("<div class='ratingDiv'>" + "Rated: " + results[i].rating.toUpperCase() + "</div>");
 
                 var gifImage = $("<img class='gifImage'>");
